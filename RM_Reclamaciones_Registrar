@@ -1,0 +1,34 @@
+USE [Intranet]
+GO
+/****** Object:  StoredProcedure [dbo].[RM_Reclamaciones_Registrar]    Script Date: 12/04/2023 11:10:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[RM_Reclamaciones_Registrar]
+(
+@usuario nchar(10),
+@tipo nchar(40),
+@cliente nchar(20),
+@descripcion_cliente nchar(80),
+@direccion nchar(20),
+@litigio_id nchar(20),
+@fecha_litigio DATE,
+@importe_solicitado decimal(18,2),
+@pedido nchar(20),
+@albaran nchar(20),
+@factura nchar(20),
+@abono nchar(20),
+@descripcion nchar(255),
+@estado nchar(20),
+@detalle_incidencia nchar(30),
+@motivo_devolucion nchar(30),
+@informacion_adicional nchar(100),
+@ruta nchar(255)
+)
+
+AS
+
+INSERT INTO dbo.RM_RECLAMACIONES
+(usuario_registro, tipo, cliente, direccion, litigio_id,fecha_litigio,importe_solicitado, pedido, albaran, factura, abono, descripcion_problema,estado, descripcion_cliente,detalle_incidencia,motivo_devolucion,informacion_adicional,ruta_fichero)
+VALUES (@usuario, @tipo, @cliente, @direccion, @litigio_id,@fecha_litigio,@importe_solicitado,@pedido,@albaran,@factura,@abono,@descripcion,@estado,@descripcion_cliente,@detalle_incidencia,@motivo_devolucion,@informacion_adicional,@ruta)
